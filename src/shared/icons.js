@@ -6,6 +6,36 @@ const createIcon = ( paths ) => (
 	</SVG>
 );
 
+const calloutGlyphs = {
+	spark: (
+		<>
+			<Path d="M12 3l1.15 4.35L17.5 8.5l-4.35 1.15L12 14l-1.15-4.35L6.5 8.5l4.35-1.15z" />
+			<Path d="M18 13.5l.67 2.33L21 16.5l-2.33.67L18 19.5l-.67-2.33L15 16.5l2.33-.67z" />
+		</>
+	),
+	quote: (
+		<>
+			<Path d="M6.5 8A3.5 3.5 0 0 0 3 11.5V18h7v-6H6.75a1.75 1.75 0 0 1 1.75-1.75h.75V8z" />
+			<Path d="M15.5 8A3.5 3.5 0 0 0 12 11.5V18h7v-6h-3.25a1.75 1.75 0 0 1 1.75-1.75h.75V8z" />
+		</>
+	),
+	chart: (
+		<>
+			<Path d="M5 18.25h14v1.5H5z" />
+			<Path d="M7 10.5h2v6H7z" />
+			<Path d="M11 7.5h2v9h-2z" />
+			<Path d="M15 4.5h2v12h-2z" />
+		</>
+	),
+	megaphone: (
+		<>
+			<Path d="M4 10.5v3l9 3.5V7z" />
+			<Path d="M13 8l5-2v12l-5-2z" />
+			<Path d="M6.5 14.25l1.25 4.25h2l-1.4-4.72z" />
+		</>
+	),
+};
+
 export const checklistIcon = createIcon(
 	<>
 		<Path d="M6 6.75h9v1.5H6z" />
@@ -24,6 +54,9 @@ export const calloutIcon = createIcon(
 		<Path d="M11.25 12.5h1.5V14h-1.5z" />
 	</>
 );
+
+export const getCalloutSymbol = ( iconName ) =>
+	createIcon( calloutGlyphs[ iconName ] || calloutGlyphs.spark );
 
 export const resourceLibraryIcon = createIcon(
 	<>

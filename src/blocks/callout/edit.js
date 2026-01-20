@@ -7,10 +7,13 @@ import {
 import { PanelBody, SelectControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
+import { getCalloutSymbol } from '../../shared/icons';
+
 export default function Edit( { attributes, setAttributes } ) {
-	const { body, ctaLabel, ctaUrl, eyebrow, title, tone } = attributes;
+	const { body, ctaLabel, ctaUrl, eyebrow, icon, layout, title, tone } =
+		attributes;
 	const blockProps = useBlockProps( {
-		className: `wp-block-publishflow-blocks-callout is-tone-${ tone }`,
+		className: `wp-block-publishflow-blocks-callout is-tone-${ tone } is-layout-${ layout }`,
 	} );
 
 	return (
@@ -41,57 +44,111 @@ export default function Edit( { attributes, setAttributes } ) {
 							setAttributes( { tone: nextValue } )
 						}
 					/>
+					<SelectControl
+						label={ __( 'Icon', 'publishflow-blocks' ) }
+						value={ icon }
+						options={ [
+							{
+								label: __( 'Spark', 'publishflow-blocks' ),
+								value: 'spark',
+							},
+							{
+								label: __( 'Quote', 'publishflow-blocks' ),
+								value: 'quote',
+							},
+							{
+								label: __( 'Chart', 'publishflow-blocks' ),
+								value: 'chart',
+							},
+							{
+								label: __( 'Megaphone', 'publishflow-blocks' ),
+								value: 'megaphone',
+							},
+						] }
+						onChange={ ( nextValue ) =>
+							setAttributes( { icon: nextValue } )
+						}
+					/>
+					<SelectControl
+						label={ __( 'Layout', 'publishflow-blocks' ) }
+						value={ layout }
+						options={ [
+							{
+								label: __( 'Stacked', 'publishflow-blocks' ),
+								value: 'stacked',
+							},
+							{
+								label: __( 'Split', 'publishflow-blocks' ),
+								value: 'split',
+							},
+						] }
+						onChange={ ( nextValue ) =>
+							setAttributes( { layout: nextValue } )
+						}
+					/>
 				</PanelBody>
 			</InspectorControls>
 			<aside { ...blockProps }>
-				<RichText
-					tagName="p"
-					className="publishflow-callout__eyebrow"
-					value={ eyebrow }
-					onChange={ ( nextValue ) =>
-						setAttributes( { eyebrow: nextValue } )
-					}
-					placeholder={ __( 'Key insight', 'publishflow-blocks' ) }
-				/>
-				<RichText
-					tagName="h3"
-					className="publishflow-callout__title"
-					value={ title }
-					onChange={ ( nextValue ) =>
-						setAttributes( { title: nextValue } )
-					}
-					placeholder={ __(
-						'Add a strong content takeaway',
-						'publishflow-blocks'
-					) }
-				/>
-				<RichText
-					tagName="p"
-					className="publishflow-callout__body"
-					value={ body }
-					onChange={ ( nextValue ) =>
-						setAttributes( { body: nextValue } )
-					}
-					placeholder={ __(
-						'Write a concise editorial callout.',
-						'publishflow-blocks'
-					) }
-				/>
-				<div className="publishflow-callout__cta">
+				<div className="publishflow-callout__icon" aria-hidden="true">
+					{ getCalloutSymbol( icon ) }
+				</div>
+				<div className="publishflow-callout__content">
 					<RichText
-						tagName="span"
-						value={ ctaLabel }
+						tagName="p"
+						className="publishflow-callout__eyebrow"
+						value={ eyebrow }
 						onChange={ ( nextValue ) =>
-							setAttributes( { ctaLabel: nextValue } )
+							setAttributes( { eyebrow: nextValue } )
 						}
-						placeholder={ __( 'Read more', 'publishflow-blocks' ) }
+						placeholder={ __(
+							'Key insight',
+							'publishflow-blocks'
+						) }
 					/>
-					<URLInputButton
-						url={ ctaUrl }
+					<RichText
+						tagName="h3"
+						className="publishflow-callout__title"
+						value={ title }
 						onChange={ ( nextValue ) =>
-							setAttributes( { ctaUrl: nextValue } )
+							setAttributes( { title: nextValue } )
 						}
+						placeholder={ __(
+							'Add a strong content takeaway',
+							'publishflow-blocks'
+						) }
 					/>
+					<RichText
+						tagName="p"
+						className="publishflow-callout__body"
+						value={ body }
+						onChange={ ( nextValue ) =>
+							setAttributes( { body: nextValue } )
+						}
+						placeholder={ __(
+							'Write a concise editorial callout.',
+							'publishflow-blocks'
+						) }
+					/>
+					<div className="publishflow-callout__cta">
+						<RichText
+							tagName="span"
+							className="publishflow-callout__cta-label"
+							value={ ctaLabel }
+							onChange={ ( nextValue ) =>
+								setAttributes( { ctaLabel: nextValue } )
+							}
+							placeholder={ __(
+								'Optional CTA label',
+								'publishflow-blocks'
+							) }
+						/>
+						<URLInputButton
+							url={ ctaUrl }
+							onChange={ ( nextValue ) =>
+								setAttributes( { ctaUrl: nextValue } )
+							}
+						/>
+					</div>
 				</div>
 			</aside>
 		</>

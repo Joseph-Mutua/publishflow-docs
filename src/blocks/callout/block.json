@@ -34,9 +34,17 @@
 			"type": "string",
 			"default": "insight"
 		},
+		"icon": {
+			"type": "string",
+			"default": "spark"
+		},
+		"layout": {
+			"type": "string",
+			"default": "stacked"
+		},
 		"ctaLabel": {
 			"type": "string",
-			"default": "Read more"
+			"default": ""
 		},
 		"ctaUrl": {
 			"type": "string",
