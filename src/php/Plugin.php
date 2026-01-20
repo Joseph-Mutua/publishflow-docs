@@ -15,6 +15,7 @@ use PublishFlowBlocks\Blocks\FootnotesBlock;
 use PublishFlowBlocks\Blocks\ResourceLibraryBlock;
 use PublishFlowBlocks\Contracts\ServiceContract;
 use PublishFlowBlocks\Infrastructure\BlockRegistry;
+use PublishFlowBlocks\Support\ResourceLibraryQueryService;
 
 final class Plugin {
 	/**
@@ -39,10 +40,11 @@ final class Plugin {
 	 * @return array<int, ServiceContract>
 	 */
 	private static function get_services(): array {
-		$blocks = array(
+		$resource_query_service = new ResourceLibraryQueryService();
+		$blocks                 = array(
 			new EditorialChecklistBlock(),
 			new CalloutBlock(),
-			new ResourceLibraryBlock(),
+			new ResourceLibraryBlock( $resource_query_service ),
 			new FootnotesBlock(),
 		);
 
