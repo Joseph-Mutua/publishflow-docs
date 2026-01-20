@@ -1,0 +1,42 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "publishflow-blocks/editorial-checklist",
+	"version": "0.1.0",
+	"title": "Editorial Checklist",
+	"category": "widgets",
+	"icon": "yes-alt",
+	"description": "Track publish-readiness directly inside the block editor.",
+	"keywords": [ "editorial", "workflow", "checklist" ],
+	"textdomain": "publishflow-blocks",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"supports": {
+		"html": false,
+		"anchor": true,
+		"align": [ "wide" ]
+	},
+	"attributes": {
+		"heading": {
+			"type": "string",
+			"default": "Ready to publish?"
+		},
+		"description": {
+			"type": "string",
+			"default": "Use this checklist to keep content quality consistent before publishing."
+		},
+		"items": {
+			"type": "array",
+			"default": []
+		},
+		"visibility": {
+			"type": "string",
+			"default": "private"
+		},
+		"showProgress": {
+			"type": "boolean",
+			"default": true
+		}
+	}
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "publishflow-blocks/callout",
+  "version": "0.1.0",
+  "title": "Callout / Insight",
+  "category": "widgets",
+  "icon": "info-outline",
+  "description": "Highlight important takeaways with a polished editorial callout.",
+  "keywords": [
+    "callout",
+    "insight",
+    "cta"
+  ],
+  "textdomain": "publishflow-blocks",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "supports": {
+    "html": false,
+    "anchor": true,
+    "align": [
+      "wide"
+    ]
+  },
+  "attributes": {
+    "eyebrow": {
+      "type": "string",
+      "default": "Key insight"
+    },
+    "title": {
+      "type": "string",
+      "default": "Make the takeaway impossible to miss."
+    },
+    "body": {
+      "type": "string",
+      "default": "Use this block to add a concise insight, supporting context, and a clear next action."
+    },
+    "tone": {
+      "type": "string",
+      "default": "insight"
+    },
+    "ctaLabel": {
+      "type": "string",
+      "default": "Read more"
+    },
+    "ctaUrl": {
+      "type": "string",
+      "default": ""
+    }
+  }
+}

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Resource library block registration.
  *

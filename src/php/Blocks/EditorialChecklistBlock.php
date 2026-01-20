@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Editorial checklist block registration.
  *

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Base class for PublishFlow blocks.
  *
@@ -41,7 +41,7 @@ abstract class BaseBlock implements BlockContract {
 	 * Returns the absolute metadata path.
 	 */
 	public function get_metadata_path(): string {
-		return PUBLISHFLOW_BLOCKS_PATH . 'src/blocks/' . $this->get_block_directory();
+		return PUBLISHFLOW_BLOCKS_PATH . 'build/blocks/' . $this->get_block_directory();
 	}
 
 	/**

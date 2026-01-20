@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Shared contract for Gutenberg block registrations.
  *

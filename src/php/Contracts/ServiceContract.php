@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Shared contract for plugin services.
  *

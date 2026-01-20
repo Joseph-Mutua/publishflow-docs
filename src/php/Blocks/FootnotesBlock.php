@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Footnotes block registration.
  *

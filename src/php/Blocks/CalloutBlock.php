@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Callout block registration.
  *
