@@ -1,4 +1,112 @@
 .wp-block-publishflow-blocks-callout {
-	padding: 1.5rem;
-	border-radius: 20px;
+	--publishflow-callout-accent: #0f766e;
+	--publishflow-callout-border: #99f6e4;
+	--publishflow-callout-surface: linear-gradient(135deg, #ecfeff 0%, #f8fafc 100%);
+	padding: clamp(1.25rem, 2vw, 1.9rem);
+	border: 1px solid var(--publishflow-callout-border);
+	border-radius: 24px;
+	background: var(--publishflow-callout-surface);
+	display: grid;
+	grid-template-columns: auto minmax(0, 1fr);
+	gap: 1rem;
+	box-shadow: 0 16px 30px -28px rgba(15, 23, 42, 0.45);
+}
+
+.wp-block-publishflow-blocks-callout.is-tone-warning {
+	--publishflow-callout-accent: #b45309;
+	--publishflow-callout-border: #fcd34d;
+	--publishflow-callout-surface: linear-gradient(135deg, #fffbeb 0%, #fff7ed 100%);
+}
+
+.wp-block-publishflow-blocks-callout.is-tone-success {
+	--publishflow-callout-accent: #166534;
+	--publishflow-callout-border: #86efac;
+	--publishflow-callout-surface: linear-gradient(135deg, #f0fdf4 0%, #f7fee7 100%);
+}
+
+.wp-block-publishflow-blocks-callout.is-layout-split {
+	grid-template-columns: minmax(0, 1fr) auto;
+	align-items: center;
+}
+
+.wp-block-publishflow-blocks-callout.is-layout-split .publishflow-callout__icon {
+	order: 2;
+}
+
+.publishflow-callout__icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 3.75rem;
+	height: 3.75rem;
+	border-radius: 18px;
+	background: rgba(255, 255, 255, 0.72);
+	color: var(--publishflow-callout-accent);
+	backdrop-filter: blur(6px);
+}
+
+.publishflow-callout__icon svg {
+	width: 1.85rem;
+	height: 1.85rem;
+	fill: currentColor;
+}
+
+.publishflow-callout__content {
+	display: grid;
+	gap: 0.7rem;
+}
+
+.publishflow-callout__eyebrow {
+	margin: 0;
+	font-size: 0.78rem;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--publishflow-callout-accent);
+}
+
+.publishflow-callout__title {
+	margin: 0;
+	font-size: clamp(1.35rem, 3vw, 1.9rem);
+	line-height: 1.12;
+}
+
+.publishflow-callout__body {
+	margin: 0;
+	color: #334155;
+	line-height: 1.65;
+}
+
+.publishflow-callout__cta {
+	margin: 0.35rem 0 0;
+}
+
+.publishflow-callout__cta-link {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	padding: 0.7rem 1rem;
+	border-radius: 999px;
+	background: #0f172a;
+	color: #ffffff;
+	font-weight: 600;
+	text-decoration: none;
+}
+
+.publishflow-callout__cta-link:hover,
+.publishflow-callout__cta-link:focus-visible {
+	background: var(--publishflow-callout-accent);
+	color: #ffffff;
+}
+
+@media (max-width: 600px) {
+	.wp-block-publishflow-blocks-callout,
+	.wp-block-publishflow-blocks-callout.is-layout-split {
+		grid-template-columns: 1fr;
+	}
+
+	.wp-block-publishflow-blocks-callout.is-layout-split .publishflow-callout__icon {
+		order: 0;
+	}
 }
