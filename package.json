@@ -15,16 +15,12 @@
     "plugin-zip": "wp-scripts plugin-zip",
     "start": "wp-scripts start --webpack-copy-php",
     "test:js": "wp-scripts test-unit-js --runInBand",
-    "typecheck": "tsc --project tsconfig.json --noEmit"
+    "typecheck": "npm run lint:js"
+  },
+  "dependencies": {
+    "@wordpress/interactivity": "^6.35.0"
   },
   "devDependencies": {
-    "@types/wordpress__blocks": "^12.5.17",
-    "@types/wordpress__block-editor": "^11.5.17",
-    "@types/wordpress__components": "^23.8.0",
-    "@types/wordpress__data": "^10.5.0",
-    "@types/wordpress__element": "^4.21.0",
-    "@types/wordpress__i18n": "^4.5.0",
-    "@wordpress/scripts": "^31.7.0",
-    "typescript": "^5.9.3"
+    "@wordpress/scripts": "^31.7.0"
   }
 }
