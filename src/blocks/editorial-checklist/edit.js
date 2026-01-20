@@ -3,11 +3,20 @@ import {
 	RichText,
 	useBlockProps,
 } from '@wordpress/block-editor';
-import { PanelBody, Placeholder, ToggleControl } from '@wordpress/components';
+import {
+	Button,
+	PanelBody,
+	TextControl,
+	ToggleControl,
+} from '@wordpress/components';
+import { useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
-import { DEFAULT_CHECKLIST_ITEMS } from '../../shared/editorial-defaults';
-import { checklistIcon } from '../../shared/icons';
+import {
+	createChecklistItem,
+	DEFAULT_CHECKLIST_ITEMS,
+} from '../../shared/editorial-defaults';
+import { clamp, moveListItem } from '../../shared/utils';
 
 export default function Edit( { attributes, setAttributes } ) {
 	const {
@@ -17,13 +26,49 @@ export default function Edit( { attributes, setAttributes } ) {
 		showProgress,
 		visibility,
 	} = attributes;
-	const completedItemCount = items.filter( ( item ) => item.checked ).length;
-	const progressValue = items.length
-		? Math.round( ( completedItemCount / items.length ) * 100 )
-		: 0;
 	const blockProps = useBlockProps( {
 		className: 'wp-block-publishflow-blocks-editorial-checklist',
 	} );
+	const completedItemCount = items.filter( ( item ) => item.checked ).length;
+	const progressValue = items.length
+		? clamp(
+				Math.round( ( completedItemCount / items.length ) * 100 ),
+				0,
+				100
+		  )
+		: 0;
+
+	useEffect( () => {
+		if ( items.length ) {
+			return;
+		}
+
+		setAttributes( { items: DEFAULT_CHECKLIST_ITEMS } );
+	}, [ items.length, setAttributes ] );
+
+	const updateItems = ( nextItems ) => {
+		setAttributes( { items: nextItems } );
+	};
+
+	const updateItem = ( itemId, nextPartial ) => {
+		updateItems(
+			items.map( ( item ) =>
+				item.id === itemId ? { ...item, ...nextPartial } : item
+			)
+		);
+	};
+
+	const removeItem = ( itemId ) => {
+		updateItems( items.filter( ( item ) => item.id !== itemId ) );
+	};
+
+	const moveItem = ( itemIndex, offset ) => {
+		updateItems( moveListItem( items, itemIndex, itemIndex + offset ) );
+	};
+
+	const addItem = () => {
+		updateItems( [ ...items, createChecklistItem() ] );
+	};
 
 	return (
 		<>
@@ -53,20 +98,21 @@ export default function Edit( { attributes, setAttributes } ) {
 								visibility: nextValue ? 'public' : 'private',
 							} )
 						}
+						help={ __(
+							'Private checklists stay visible only in the editor.',
+							'publishflow-blocks'
+						) }
 					/>
 				</PanelBody>
 			</InspectorControls>
 			<section { ...blockProps }>
-				<Placeholder
-					icon={ checklistIcon }
-					label={ __( 'Editorial checklist', 'publishflow-blocks' ) }
-					instructions={ __(
-						'Track readiness items before you ship an article.',
-						'publishflow-blocks'
-					) }
-				>
+				<div className="publishflow-editorial-checklist__header">
+					<p className="publishflow-editorial-checklist__eyebrow">
+						{ __( 'PublishFlow checklist', 'publishflow-blocks' ) }
+					</p>
 					<RichText
 						tagName="h3"
+						className="publishflow-editorial-checklist__title"
 						value={ heading }
 						onChange={ ( nextValue ) =>
 							setAttributes( { heading: nextValue } )
@@ -78,36 +124,114 @@ export default function Edit( { attributes, setAttributes } ) {
 					/>
 					<RichText
 						tagName="p"
+						className="publishflow-editorial-checklist__description"
 						value={ description }
 						onChange={ ( nextValue ) =>
 							setAttributes( { description: nextValue } )
 						}
 						placeholder={ __(
-							'Describe the publishing gate for contributors.',
+							'Describe the quality gate for this article.',
 							'publishflow-blocks'
 						) }
 					/>
-					<ul
-						className="publishflow-checklist-preview"
-						aria-label={ __(
-							'Checklist preview',
-							'publishflow-blocks'
-						) }
+				</div>
+				{ showProgress && (
+					<div
+						className="publishflow-editorial-checklist__progress"
+						aria-hidden="true"
 					>
-						{ items.map( ( item ) => (
-							<li key={ item.id }>
-								<span aria-hidden="true">[ ]</span>
-								<span>{ item.label }</span>
-							</li>
-						) ) }
-					</ul>
-					{ showProgress && (
-						<p>
-							{ __( 'Progress', 'publishflow-blocks' ) }:{ ' ' }
-							{ progressValue }%
-						</p>
-					) }
-				</Placeholder>
+						<div className="publishflow-editorial-checklist__progress-copy">
+							<span>
+								{ completedItemCount } / { items.length }
+							</span>
+							<strong>{ progressValue }%</strong>
+						</div>
+						<div className="publishflow-editorial-checklist__progress-bar">
+							<span style={ { width: `${ progressValue }%` } } />
+						</div>
+					</div>
+				) }
+				<div className="publishflow-editorial-checklist__items">
+					{ items.map( ( item, index ) => (
+						<div
+							className="publishflow-editorial-checklist__item"
+							key={ item.id }
+						>
+							<Button
+								className="publishflow-editorial-checklist__status"
+								variant={
+									item.checked ? 'primary' : 'secondary'
+								}
+								onClick={ () =>
+									updateItem( item.id, {
+										checked: ! item.checked,
+									} )
+								}
+							>
+								{ item.checked
+									? __( 'Done', 'publishflow-blocks' )
+									: __( 'Open', 'publishflow-blocks' ) }
+							</Button>
+							<TextControl
+								__next40pxDefaultSize
+								label={ __(
+									'Checklist item label',
+									'publishflow-blocks'
+								) }
+								hideLabelFromVision
+								value={ item.label }
+								onChange={ ( nextValue ) =>
+									updateItem( item.id, { label: nextValue } )
+								}
+							/>
+							<div className="publishflow-editorial-checklist__item-actions">
+								<Button
+									icon="arrow-up-alt2"
+									label={ __(
+										'Move item up',
+										'publishflow-blocks'
+									) }
+									onClick={ () => moveItem( index, -1 ) }
+									disabled={ index === 0 }
+								/>
+								<Button
+									icon="arrow-down-alt2"
+									label={ __(
+										'Move item down',
+										'publishflow-blocks'
+									) }
+									onClick={ () => moveItem( index, 1 ) }
+									disabled={ index === items.length - 1 }
+								/>
+								<Button
+									icon="trash"
+									label={ __(
+										'Remove item',
+										'publishflow-blocks'
+									) }
+									onClick={ () => removeItem( item.id ) }
+									disabled={ items.length === 1 }
+								/>
+							</div>
+						</div>
+					) ) }
+				</div>
+				<div className="publishflow-editorial-checklist__footer">
+					<Button variant="secondary" onClick={ addItem }>
+						{ __( 'Add checklist item', 'publishflow-blocks' ) }
+					</Button>
+					<p>
+						{ visibility === 'public'
+							? __(
+									'Readers will see checklist progress on the frontend.',
+									'publishflow-blocks'
+							  )
+							: __(
+									'Readers will not see this checklist on the frontend.',
+									'publishflow-blocks'
+							  ) }
+					</p>
+				</div>
 			</section>
 		</>
 	);
