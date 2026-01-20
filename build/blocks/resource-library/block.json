@@ -22,7 +22,8 @@
     "anchor": true,
     "align": [
       "wide"
-    ]
+    ],
+    "interactivity": true
   },
   "attributes": {
     "heading": {

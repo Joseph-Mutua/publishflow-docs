@@ -1,59 +1,60 @@
 {
-	"$schema": "https://schemas.wp.org/trunk/block.json",
-	"apiVersion": 3,
-	"name": "publishflow-blocks/resource-library",
-	"version": "0.1.0",
-	"title": "Resource Library",
-	"category": "widgets",
-	"icon": "search",
-	"description": "Insert a filtered set of related content resources for readers.",
-	"keywords": [ "resources", "related posts", "search" ],
-	"textdomain": "publishflow-blocks",
-	"editorScript": "file:./index.js",
-	"editorStyle": "file:./index.css",
-	"style": "file:./style-index.css",
-	"viewScriptModule": "file:./view.js",
-	"supports": {
-		"html": false,
-		"anchor": true,
-		"align": [ "wide" ]
-	},
-	"attributes": {
-		"heading": {
-			"type": "string",
-			"default": "Keep exploring"
-		},
-		"description": {
-			"type": "string",
-			"default": "Point readers to the most relevant follow-up resources."
-		},
-		"mode": {
-			"type": "string",
-			"default": "query"
-		},
-		"postsToShow": {
-			"type": "number",
-			"default": 4
-		},
-		"selectedPostIds": {
-			"type": "array",
-			"default": []
-		},
-		"categoryIds": {
-			"type": "array",
-			"default": []
-		},
-		"tagIds": {
-			"type": "array",
-			"default": []
-		},
-		"enableSearch": {
-			"type": "boolean",
-			"default": true
-		},
-		"showFilters": {
-			"type": "boolean",
-			"default": true
-		}
-	}
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "publishflow-blocks/resource-library",
+  "version": "0.1.0",
+  "title": "Resource Library",
+  "category": "widgets",
+  "icon": "search",
+  "description": "Insert a filtered set of related content resources for readers.",
+  "keywords": ["resources", "related posts", "search"],
+  "textdomain": "publishflow-blocks",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "viewScriptModule": "file:./view.js",
+  "supports": {
+    "html": false,
+    "anchor": true,
+    "align": ["wide"],
+    "interactivity": true
+  },
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "default": "Keep exploring"
+    },
+    "description": {
+      "type": "string",
+      "default": "Point readers to the most relevant follow-up resources."
+    },
+    "mode": {
+      "type": "string",
+      "default": "query"
+    },
+    "postsToShow": {
+      "type": "number",
+      "default": 4
+    },
+    "selectedPostIds": {
+      "type": "array",
+      "default": []
+    },
+    "categoryIds": {
+      "type": "array",
+      "default": []
+    },
+    "tagIds": {
+      "type": "array",
+      "default": []
+    },
+    "enableSearch": {
+      "type": "boolean",
+      "default": true
+    },
+    "showFilters": {
+      "type": "boolean",
+      "default": true
+    }
+  }
 }
