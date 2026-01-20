@@ -1,6 +1,9 @@
 import { getContext, getElement, store } from '@wordpress/interactivity';
 
-const normalize = ( value = '' ) => value.toLowerCase().trim();
+import {
+	isResourceVisible,
+	normalizeSearchValue,
+} from '../../shared/resource-matching';
 
 store( 'publishflow/resource-library', {
 	state: {
@@ -14,27 +17,29 @@ store( 'publishflow/resource-library', {
 		get isResourceHidden() {
 			const context = getContext();
 			const { ref } = getElement();
-			const title = normalize( ref?.dataset?.resourceTitle || '' );
-			const excerpt = normalize( ref?.dataset?.resourceExcerpt || '' );
-			const searchValue = normalize( context.searchTerm );
 			const terms = ( ref?.dataset?.resourceTerms || '' )
 				.split( ' ' )
 				.filter( Boolean );
-			const matchesSearch =
-				! searchValue ||
-				title.includes( searchValue ) ||
-				excerpt.includes( searchValue );
-			const matchesFilter =
-				context.activeFilter === 'all' ||
-				terms.includes( context.activeFilter );
 
-			return ! ( matchesSearch && matchesFilter );
+			return ! isResourceVisible(
+				{
+					activeFilter: context.activeFilter,
+					searchTerm: context.searchTerm,
+				},
+				{
+					excerpt: ref?.dataset?.resourceExcerpt || '',
+					terms,
+					title: ref?.dataset?.resourceTitle || '',
+				}
+			);
 		},
 	},
 	actions: {
 		updateSearch( event ) {
 			const context = getContext();
-			context.searchTerm = event.target.value || '';
+			context.searchTerm = normalizeSearchValue(
+				event.target.value || ''
+			);
 		},
 		setFilter( event ) {
 			const context = getContext();
