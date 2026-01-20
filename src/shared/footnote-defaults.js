@@ -12,3 +12,12 @@ export const DEFAULT_FOOTNOTES = [
 		url: '',
 	},
 ];
+
+export const createFootnoteItem = ( label = 'New source' ) => ( {
+	id: `footnote-${ Date.now().toString( 36 ) }-${ Math.random()
+		.toString( 36 )
+		.slice( 2, 8 ) }`,
+	label,
+	citation: '',
+	url: '',
+} );

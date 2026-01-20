@@ -1,3 +1,59 @@
-.publishflow-footnotes-preview {
-	margin: 1rem 0 0;
+.wp-block-publishflow-blocks-footnotes {
+	padding: 1.5rem;
+	border: 1px solid #e6dcc7;
+	border-radius: 24px;
+	background: linear-gradient(180deg, #fffdfa 0%, #fff7ed 100%);
+}
+
+.publishflow-footnotes__title {
+	margin: 0 0 1rem;
+	font-size: 1.5rem;
+	line-height: 1.15;
+}
+
+.publishflow-footnotes__items {
+	display: grid;
+	gap: 0.9rem;
+}
+
+.publishflow-footnotes__item {
+	padding: 1rem;
+	border: 1px solid #eadbc8;
+	border-radius: 18px;
+	background: rgba(255, 255, 255, 0.92);
+}
+
+.publishflow-footnotes__item-header {
+	display: flex;
+	justify-content: space-between;
+	gap: 1rem;
+	align-items: center;
+	margin-bottom: 0.75rem;
+}
+
+.publishflow-footnotes__item-actions {
+	display: flex;
+	gap: 0.25rem;
+}
+
+.publishflow-footnotes__footer {
+	display: flex;
+	justify-content: space-between;
+	gap: 1rem;
+	align-items: center;
+	margin-top: 1rem;
+}
+
+.publishflow-footnotes__footer p {
+	margin: 0;
+	max-width: 28rem;
+	font-size: 0.9rem;
+	color: #57534e;
+}
+
+@media (max-width: 782px) {
+	.publishflow-footnotes__item-header,
+	.publishflow-footnotes__footer {
+		flex-wrap: wrap;
+	}
 }
