@@ -1,3 +1,65 @@
-.wp-block-publishflow-blocks-footnotes {
-	border-radius: 20px;
+.wp-block-publishflow-blocks-footnotes.publishflow-footnotes {
+	padding: clamp(1.25rem, 2vw, 2rem);
+	border: 1px solid #e6dcc7;
+	border-radius: 24px;
+	background: linear-gradient(180deg, #fffdfa 0%, #fff7ed 100%);
+}
+
+.publishflow-footnotes__heading {
+	margin: 0 0 1rem;
+	font-size: clamp(1.35rem, 3vw, 1.8rem);
+	line-height: 1.15;
+}
+
+.publishflow-footnotes__list {
+	margin: 0;
+	padding-left: 1.5rem;
+	display: grid;
+	gap: 0.9rem;
+}
+
+.publishflow-footnotes__list-item {
+	padding: 1rem;
+	border: 1px solid #eadbc8;
+	border-radius: 18px;
+	background: rgba(255, 255, 255, 0.94);
+}
+
+.publishflow-footnotes__reference {
+	display: grid;
+	gap: 0.45rem;
+}
+
+.publishflow-footnotes__label {
+	font-weight: 700;
+	color: #7c2d12;
+}
+
+.publishflow-footnotes__citation {
+	color: #57534e;
+	line-height: 1.6;
+}
+
+.publishflow-footnotes__link {
+	display: inline-flex;
+	margin-top: 0.75rem;
+	font-weight: 600;
+	color: #9a3412;
+}
+
+.publishflow-footnotes__link:hover,
+.publishflow-footnotes__link:focus-visible {
+	color: #7c2d12;
+}
+
+.wp-block-publishflow-blocks-footnotes.is-style-compact .publishflow-footnotes__list-item {
+	padding: 0.8rem 0.9rem;
+}
+
+.wp-block-publishflow-blocks-footnotes.is-style-compact .publishflow-footnotes__reference {
+	gap: 0.25rem;
+}
+
+.wp-block-publishflow-blocks-footnotes.is-style-compact .publishflow-footnotes__citation {
+	font-size: 0.94rem;
 }
