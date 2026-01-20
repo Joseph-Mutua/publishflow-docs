@@ -1,0 +1,3 @@
+/**
+ * Block registration entrypoint.
+ */
