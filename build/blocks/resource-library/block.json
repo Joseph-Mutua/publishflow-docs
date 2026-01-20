@@ -45,6 +45,14 @@
       "type": "array",
       "default": []
     },
+    "categoryIds": {
+      "type": "array",
+      "default": []
+    },
+    "tagIds": {
+      "type": "array",
+      "default": []
+    },
     "enableSearch": {
       "type": "boolean",
       "default": true

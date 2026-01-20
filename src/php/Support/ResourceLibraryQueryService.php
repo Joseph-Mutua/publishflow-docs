@@ -75,6 +75,16 @@ final class ResourceLibraryQueryService {
 				array_map( 'intval', isset( $attributes['selectedPostIds'] ) && is_array( $attributes['selectedPostIds'] ) ? $attributes['selectedPostIds'] : array() )
 			)
 		);
+		$category_ids  = array_values(
+			array_filter(
+				array_map( 'intval', isset( $attributes['categoryIds'] ) && is_array( $attributes['categoryIds'] ) ? $attributes['categoryIds'] : array() )
+			)
+		);
+		$tag_ids       = array_values(
+			array_filter(
+				array_map( 'intval', isset( $attributes['tagIds'] ) && is_array( $attributes['tagIds'] ) ? $attributes['tagIds'] : array() )
+			)
+		);
 
 		$query_arguments = array(
 			'post_type'           => 'post',
@@ -88,6 +98,30 @@ final class ResourceLibraryQueryService {
 			$query_arguments['post__in']       = $post_ids;
 			$query_arguments['orderby']        = 'post__in';
 			$query_arguments['posts_per_page'] = count( $post_ids );
+
+			return $query_arguments;
+		}
+
+		$tax_query = array();
+
+		if ( ! empty( $category_ids ) ) {
+			$tax_query[] = array(
+				'taxonomy' => 'category',
+				'field'    => 'term_id',
+				'terms'    => $category_ids,
+			);
+		}
+
+		if ( ! empty( $tag_ids ) ) {
+			$tax_query[] = array(
+				'taxonomy' => 'post_tag',
+				'field'    => 'term_id',
+				'terms'    => $tag_ids,
+			);
+		}
+
+		if ( ! empty( $tax_query ) ) {
+			$query_arguments['tax_query'] = $tax_query;
 		}
 
 		return $query_arguments;
