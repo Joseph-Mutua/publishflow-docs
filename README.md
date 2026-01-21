@@ -138,17 +138,24 @@ Tradeoff:
 
 ## Development
 
-From the repo root:
+From the standalone plugin root:
 
 ```powershell
-npm --workspace plugins/publishflow-blocks run build
-npm --workspace plugins/publishflow-blocks run lint:js
-npm --workspace plugins/publishflow-blocks run test:js
+npm install
+npm run lint:publishflow
+npm run test:publishflow
+npm run build:publishflow
 ```
 
 ## Build Output
 
 Compiled assets are committed in `build/blocks/*` because WordPress block registration points at built metadata rather than raw source files.
+
+## Local Run And Publishing
+
+- Local setup instructions: [docs/local-development.md](./docs/local-development.md)
+- WordPress.org release guide: [docs/wordpress-org-release.md](./docs/wordpress-org-release.md)
+- Architecture notes: [docs/architecture.md](./docs/architecture.md)
 
 ## Notes
 

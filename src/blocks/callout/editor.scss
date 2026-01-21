@@ -42,7 +42,7 @@
 .publishflow-callout__icon svg {
 	width: 1.75rem;
 	height: 1.75rem;
-	fill: currentColor;
+	fill: currentcolor;
 }
 
 .publishflow-callout__content {
@@ -82,6 +82,7 @@
 }
 
 @media (max-width: 782px) {
+
 	.wp-block-publishflow-blocks-callout,
 	.wp-block-publishflow-blocks-callout.is-layout-split {
 		grid-template-columns: 1fr;

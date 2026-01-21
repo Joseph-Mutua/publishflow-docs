@@ -27,7 +27,7 @@
 .publishflow-resource-library__editor-icon svg {
 	width: 1.5rem;
 	height: 1.5rem;
-	fill: currentColor;
+	fill: currentcolor;
 }
 
 .publishflow-resource-library__editor-mode {
@@ -60,6 +60,7 @@
 }
 
 @media (max-width: 782px) {
+
 	.publishflow-resource-library__editor-header,
 	.publishflow-resource-library__editor-preview {
 		grid-template-columns: 1fr;

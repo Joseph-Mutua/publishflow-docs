@@ -29,10 +29,6 @@
 	align-items: center;
 }
 
-.wp-block-publishflow-blocks-callout.is-layout-split .publishflow-callout__icon {
-	order: 2;
-}
-
 .publishflow-callout__icon {
 	display: inline-flex;
 	align-items: center;
@@ -48,7 +44,11 @@
 .publishflow-callout__icon svg {
 	width: 1.85rem;
 	height: 1.85rem;
-	fill: currentColor;
+	fill: currentcolor;
+}
+
+.wp-block-publishflow-blocks-callout.is-layout-split .publishflow-callout__icon {
+	order: 2;
 }
 
 .publishflow-callout__content {
@@ -89,7 +89,7 @@
 	padding: 0.7rem 1rem;
 	border-radius: 999px;
 	background: #0f172a;
-	color: #ffffff;
+	color: #fff;
 	font-weight: 600;
 	text-decoration: none;
 }
@@ -97,10 +97,11 @@
 .publishflow-callout__cta-link:hover,
 .publishflow-callout__cta-link:focus-visible {
 	background: var(--publishflow-callout-accent);
-	color: #ffffff;
+	color: #fff;
 }
 
 @media (max-width: 600px) {
+
 	.wp-block-publishflow-blocks-callout,
 	.wp-block-publishflow-blocks-callout.is-layout-split {
 		grid-template-columns: 1fr;

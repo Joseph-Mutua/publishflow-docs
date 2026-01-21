@@ -93,7 +93,7 @@
 
 .publishflow-editorial-checklist__list-item.is-complete .publishflow-editorial-checklist__status {
 	background: #166534;
-	color: #ffffff;
+	color: #fff;
 }
 
 .publishflow-editorial-checklist__label {
@@ -102,6 +102,7 @@
 }
 
 @media (max-width: 600px) {
+
 	.publishflow-editorial-checklist__list-item,
 	.publishflow-editorial-checklist__progress-copy {
 		flex-direction: column;
