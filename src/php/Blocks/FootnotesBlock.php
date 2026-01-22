@@ -47,7 +47,7 @@ final class FootnotesBlock extends BaseBlock {
 
 		ob_start();
 		?>
-		<section <?php echo get_block_wrapper_attributes( array( 'class' => $wrapper_class ) ); ?>>
+		<section <?php echo Html::block_wrapper_attributes( array( 'class' => $wrapper_class ) ); ?>>
 			<?php if ( $heading ) : ?>
 				<h3 class="publishflow-footnotes__heading"><?php echo wp_kses_post( $heading ); ?></h3>
 			<?php endif; ?>

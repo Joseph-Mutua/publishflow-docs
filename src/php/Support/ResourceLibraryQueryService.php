@@ -39,10 +39,10 @@ final class ResourceLibraryQueryService {
 
 			$resources[] = array(
 				'id'          => (int) $post->ID,
-				'title'       => html_entity_decode( wp_strip_all_tags( get_the_title( $post ) ), ENT_QUOTES, get_bloginfo( 'charset' ) ),
-				'excerpt'     => html_entity_decode( wp_strip_all_tags( get_the_excerpt( $post ) ), ENT_QUOTES, get_bloginfo( 'charset' ) ),
-				'url'         => get_permalink( $post ),
-				'type'        => $post_type ? $post_type->labels->singular_name : __( 'Post', 'publishflow-blocks' ),
+				'title'       => sanitize_text_field( html_entity_decode( wp_strip_all_tags( get_the_title( $post ) ), ENT_QUOTES, get_bloginfo( 'charset' ) ) ),
+				'excerpt'     => sanitize_text_field( html_entity_decode( wp_strip_all_tags( get_the_excerpt( $post ) ), ENT_QUOTES, get_bloginfo( 'charset' ) ) ),
+				'url'         => esc_url_raw( get_permalink( $post ) ),
+				'type'        => sanitize_text_field( $post_type ? $post_type->labels->singular_name : __( 'Post', 'publishflow-blocks' ) ),
 				'categories'  => $categories,
 				'tags'        => $tags,
 				'filterTerms' => array_values(
@@ -137,8 +137,8 @@ final class ResourceLibraryQueryService {
 		return array_values(
 			array_map(
 				static fn( \WP_Term $term ): array => array(
-					'label' => $term->name,
-					'slug'  => $term->slug,
+					'label' => sanitize_text_field( $term->name ),
+					'slug'  => sanitize_title( $term->slug ),
 				),
 				$terms
 			)

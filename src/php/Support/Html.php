@@ -20,4 +20,13 @@ final class Html {
 
 		return implode( ' ', array_unique( $class_names ) );
 	}
+
+	/**
+	 * Returns escaped block wrapper attributes for safe output.
+	 *
+	 * @param array<string, string> $attributes Wrapper attributes.
+	 */
+	public static function block_wrapper_attributes( array $attributes = array() ): string {
+		return wp_kses_data( get_block_wrapper_attributes( $attributes ) );
+	}
 }

@@ -60,12 +60,12 @@ final class ResourceLibraryBlock extends BaseBlock {
 				'activeFilter' => 'all',
 				'searchTerm'   => '',
 			)
-		);
+		) ?: '{}';
 
 		ob_start();
 		?>
 		<section
-			<?php echo get_block_wrapper_attributes( array( 'class' => $wrapper_class ) ); ?>
+			<?php echo Html::block_wrapper_attributes( array( 'class' => $wrapper_class ) ); ?>
 			data-wp-interactive="publishflow/resource-library"
 			data-wp-context="<?php echo esc_attr( $context_payload ); ?>"
 		>
@@ -74,7 +74,7 @@ final class ResourceLibraryBlock extends BaseBlock {
 					<h3 class="publishflow-resource-library__title"><?php echo wp_kses_post( $heading ); ?></h3>
 				<?php endif; ?>
 				<?php if ( $description ) : ?>
-					<div class="publishflow-resource-library__description"><?php echo wpautop( wp_kses_post( $description ) ); ?></div>
+					<div class="publishflow-resource-library__description"><?php echo wp_kses_post( wpautop( $description ) ); ?></div>
 				<?php endif; ?>
 				<p class="publishflow-resource-library__mode-label">
 					<?php echo esc_html( 'manual' === $mode ? __( 'Curated by editors', 'publishflow-blocks' ) : __( 'Related resources', 'publishflow-blocks' ) ); ?>

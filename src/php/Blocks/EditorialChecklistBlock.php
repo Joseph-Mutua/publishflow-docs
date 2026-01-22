@@ -59,7 +59,7 @@ final class EditorialChecklistBlock extends BaseBlock {
 				'is-public',
 			)
 		);
-		$wrapper_attributes = get_block_wrapper_attributes(
+		$wrapper_attributes = Html::block_wrapper_attributes(
 			array(
 				'class' => $wrapper_classes,
 			)
@@ -67,14 +67,14 @@ final class EditorialChecklistBlock extends BaseBlock {
 
 		ob_start();
 		?>
-		<section <?php echo $wrapper_attributes; ?>>
+		<section <?php echo wp_kses_data( $wrapper_attributes ); ?>>
 			<div class="publishflow-editorial-checklist__header">
 				<p class="publishflow-editorial-checklist__eyebrow"><?php esc_html_e( 'PublishFlow checklist', 'publishflow-blocks' ); ?></p>
 				<?php if ( $heading ) : ?>
 					<h3 class="publishflow-editorial-checklist__title"><?php echo wp_kses_post( $heading ); ?></h3>
 				<?php endif; ?>
 				<?php if ( $description ) : ?>
-					<div class="publishflow-editorial-checklist__description"><?php echo wpautop( wp_kses_post( $description ) ); ?></div>
+					<div class="publishflow-editorial-checklist__description"><?php echo wp_kses_post( wpautop( $description ) ); ?></div>
 				<?php endif; ?>
 			</div>
 			<?php if ( $show_progress ) : ?>
