@@ -1,12 +1,11 @@
 <?php
 /**
  * Plugin Name:       PublishFlow Blocks
- * Plugin URI:        http://publishflow-test.local/publishflow-blocks
  * Description:       Editorial workflow blocks for modern publishing teams using Gutenberg.
  * Version:           0.1.0
  * Requires at least: 6.6
  * Requires PHP:      7.4
- * Author:            Portfolio Engineering
+ * Author:            Joseph Mutua
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       publishflow-blocks
