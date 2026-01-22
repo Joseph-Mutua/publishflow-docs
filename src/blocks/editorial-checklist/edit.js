@@ -16,11 +16,7 @@ import {
 	createChecklistItem,
 	DEFAULT_CHECKLIST_ITEMS,
 } from '../../shared/editorial-defaults';
-import {
-	moveDownIcon,
-	moveUpIcon,
-	removeIcon,
-} from '../../shared/icons';
+import { moveDownIcon, moveUpIcon, removeIcon } from '../../shared/icons';
 import { clamp, moveListItem } from '../../shared/utils';
 
 export default function Edit( { attributes, setAttributes } ) {
