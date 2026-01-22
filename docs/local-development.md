@@ -74,7 +74,7 @@ to:
 ```powershell
 New-Item -ItemType SymbolicLink `
   -Path "C:\path\to\wordpress\wp-content\plugins\publishflow-blocks" `
-  -Target "D:\WORK\FOLDER2\publishflow-blocks"
+  -Target "D:\path\to\publishflow-blocks"
 ```
 
 ## Activate the Plugin

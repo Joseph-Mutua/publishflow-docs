@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:       PublishFlow Blocks
- * Plugin URI:        https://example.com/publishflow-blocks
+ * Plugin URI:        http://publishflow-test.local/publishflow-blocks
  * Description:       Editorial workflow blocks for modern publishing teams using Gutenberg.
  * Version:           0.1.0
  * Requires at least: 6.6
