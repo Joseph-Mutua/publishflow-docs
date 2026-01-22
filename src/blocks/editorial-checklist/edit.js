@@ -16,6 +16,11 @@ import {
 	createChecklistItem,
 	DEFAULT_CHECKLIST_ITEMS,
 } from '../../shared/editorial-defaults';
+import {
+	moveDownIcon,
+	moveUpIcon,
+	removeIcon,
+} from '../../shared/icons';
 import { clamp, moveListItem } from '../../shared/utils';
 
 export default function Edit( { attributes, setAttributes } ) {
@@ -186,32 +191,44 @@ export default function Edit( { attributes, setAttributes } ) {
 							/>
 							<div className="publishflow-editorial-checklist__item-actions">
 								<Button
-									icon="arrow-up-alt2"
+									className="publishflow-editorial-checklist__icon-button"
+									variant="secondary"
 									label={ __(
 										'Move item up',
 										'publishflow-blocks'
 									) }
+									showTooltip
 									onClick={ () => moveItem( index, -1 ) }
 									disabled={ index === 0 }
-								/>
+								>
+									{ moveUpIcon }
+								</Button>
 								<Button
-									icon="arrow-down-alt2"
+									className="publishflow-editorial-checklist__icon-button"
+									variant="secondary"
 									label={ __(
 										'Move item down',
 										'publishflow-blocks'
 									) }
+									showTooltip
 									onClick={ () => moveItem( index, 1 ) }
 									disabled={ index === items.length - 1 }
-								/>
+								>
+									{ moveDownIcon }
+								</Button>
 								<Button
-									icon="trash"
+									className="publishflow-editorial-checklist__icon-button is-destructive"
+									variant="secondary"
 									label={ __(
 										'Remove item',
 										'publishflow-blocks'
 									) }
+									showTooltip
 									onClick={ () => removeItem( item.id ) }
 									disabled={ items.length === 1 }
-								/>
+								>
+									{ removeIcon }
+								</Button>
 							</div>
 						</div>
 					) ) }

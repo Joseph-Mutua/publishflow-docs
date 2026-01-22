@@ -47,6 +47,24 @@ export const checklistIcon = createIcon(
 	</>
 );
 
+export const moveUpIcon = createIcon(
+	<Path d="M12 5.25l-5.5 5.5 1.06 1.06 3.69-3.68V18.75h1.5V8.13l3.69 3.68 1.06-1.06z" />
+);
+
+export const moveDownIcon = createIcon(
+	<Path d="M12.75 15.87l3.69-3.68 1.06 1.06-5.5 5.5-5.5-5.5 1.06-1.06 3.69 3.68V5.25h1.5z" />
+);
+
+export const removeIcon = createIcon(
+	<>
+		<Path d="M9.5 4.75h5l.5 1.5H19v1.5H5v-1.5h4z" />
+		<Path d="M7.25 9h1.5v8h-1.5z" />
+		<Path d="M11.25 9h1.5v8h-1.5z" />
+		<Path d="M15.25 9h1.5v8h-1.5z" />
+		<Path d="M7 19.25h10l.75-11.5H6.25z" />
+	</>
+);
+
 export const calloutIcon = createIcon(
 	<>
 		<Path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8A2.5 2.5 0 0 1 17.5 16H11l-4 5v-5H6.5A2.5 2.5 0 0 1 4 13.5z" />
