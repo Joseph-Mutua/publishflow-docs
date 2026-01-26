@@ -26,6 +26,8 @@ The plugin currently includes four blocks:
 
 The Editorial Checklist block gives writers and editors a lightweight publish-readiness workflow directly inside the block editor.
 
+![Editorial Checklist block screenshot](./.wordpress-org/screenshot-1.png)
+
 It supports:
 
 - editable checklist items
@@ -38,6 +40,8 @@ It supports:
 
 The Callout / Insight block is designed for key takeaways, highlighted guidance, and optional calls to action.
 
+![Callout / Insight block screenshot](./.wordpress-org/screenshot-2.png)
+
 It supports:
 
 - multiple tone variants
@@ -48,6 +52,8 @@ It supports:
 ### Resource Library
 
 The Resource Library block helps editors surface related content and follow-up reading.
+
+![Resource Library block screenshot](./.wordpress-org/screenshot-3.png)
 
 It supports:
 
@@ -60,6 +66,8 @@ It supports:
 ### Footnotes / References
 
 The Footnotes / References block is intended for citations, source lists, and structured references.
+
+![Footnotes / References block screenshot](./.wordpress-org/screenshot-4.png)
 
 It supports:
 
