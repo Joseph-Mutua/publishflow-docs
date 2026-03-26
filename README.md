@@ -1,13 +1,23 @@
 # PublishFlow Blocks
 
+<p align="center">
+  <img src="./.wordpress-org/banner-1544x500.png" alt="PublishFlow Blocks banner" />
+</p>
+
+<p align="center">
+  <img src="./.wordpress-org/icon-128x128.png" alt="PublishFlow Blocks icon" width="72" height="72" />
+</p>
+
 PublishFlow Blocks is a Gutenberg plugin for editorial and publishing workflows. Instead of offering a generic visual block pack, it focuses on structured content tools that help teams draft, review, and publish with more consistency.
 
-The plugin currently includes four blocks:
+## Quick Look
 
-- Editorial Checklist
-- Callout / Insight
-- Resource Library
-- Footnotes / References
+| Block | Primary Use | Rendering Model | Highlights |
+| --- | --- | --- | --- |
+| Editorial Checklist | Track publish readiness inside a post | Dynamic | progress tracking, reorderable items, public/private visibility |
+| Callout / Insight | Highlight takeaways and editorial guidance | Static | tone variants, icon options, optional CTA |
+| Resource Library | Surface related content and follow-up reading | Dynamic | manual or query mode, filters, Interactivity API search |
+| Footnotes / References | Add structured citations and evidence notes | Dynamic | ordered references, compact/detailed modes, semantic output |
 
 ## Features
 
